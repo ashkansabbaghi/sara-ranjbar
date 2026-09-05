@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@import "@fontsource-variable/vazirmatn";
+
+@theme {
+  --font-sans: "Vazirmatn Variable", "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+  --color-cream: #f7f5f2;
+  --color-sand: #ebe6df;
+  --color-stone-soft: #d8d2c8;
+  --color-ink: #2c2a27;
+  --color-ink-muted: #6b6560;
+  --color-accent: #8b7355;
+  --color-accent-soft: #c4a882;
+  --color-white-soft: #fffcf9;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: color-mix(in oklab, var(--color-accent-soft) 45%, white);
+}
