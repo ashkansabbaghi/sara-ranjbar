@@ -11,3 +11,7 @@ Prices need confirmation. No invented phone numbers.
 
 ## Persian note
 قیمت‌ها تأیید شده‌اند. واتساپ/اینستا از `.env` خوانده می‌شود.
+
+## GitHub Pages
+Live site: https://ashkansabbaghi.github.io/sara-ranjbar/
+Deployed via Actions (.github/workflows/deploy-pages.yml) on push to main.
