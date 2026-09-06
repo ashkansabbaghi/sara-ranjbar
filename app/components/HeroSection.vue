@@ -1,5 +1,11 @@
 <script setup lang="ts">
-const { buildWhatsAppUrl, defaultConsultMessage, hasWhatsApp } = useContact()
+const {
+  buildWhatsAppUrl,
+  defaultConsultMessage,
+  hasWhatsApp,
+  hasInstagram,
+  instagramUrl,
+} = useContact()
 </script>
 
 <template>
@@ -18,18 +24,21 @@ const { buildWhatsAppUrl, defaultConsultMessage, hasWhatsApp } = useContact()
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a
-            href="#booking"
-            class="inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-medium text-cream transition hover:bg-accent"
-          >
-            رزرو مشاوره
-          </a>
-          <a
-            :href="hasWhatsApp ? buildWhatsAppUrl(defaultConsultMessage) : '#booking'"
+            :href="hasWhatsApp ? buildWhatsAppUrl(defaultConsultMessage) : '#contact'"
             :target="hasWhatsApp ? '_blank' : undefined"
             :rel="hasWhatsApp ? 'noopener noreferrer' : undefined"
-            class="inline-flex items-center justify-center rounded-full border border-stone-soft bg-white-soft px-6 py-3 text-sm font-medium text-ink transition hover:border-accent hover:text-accent"
+            class="inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-medium text-cream transition hover:bg-accent"
           >
             گفت‌وگو در واتساپ
+          </a>
+          <a
+            v-if="hasInstagram"
+            :href="instagramUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-full border border-stone-soft bg-white-soft px-6 py-3 text-sm font-medium text-ink transition hover:border-accent hover:text-accent"
+          >
+            اینستاگرام
           </a>
         </div>
       </div>

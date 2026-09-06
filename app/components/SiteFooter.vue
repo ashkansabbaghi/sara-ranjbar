@@ -15,16 +15,10 @@ const year = new Date().getFullYear()
       </div>
       <div class="flex flex-wrap gap-3">
         <a
-          href="#booking"
-          class="rounded-full bg-ink px-4 py-2 text-sm text-cream transition hover:bg-accent"
-        >
-          رزرو مشاوره
-        </a>
-        <a
-          :href="hasWhatsApp ? buildWhatsAppUrl(defaultConsultMessage) : '#booking'"
+          :href="hasWhatsApp ? buildWhatsAppUrl(defaultConsultMessage) : '#contact'"
           :target="hasWhatsApp ? '_blank' : undefined"
           :rel="hasWhatsApp ? 'noopener noreferrer' : undefined"
-          class="rounded-full border border-stone-soft px-4 py-2 text-sm text-ink transition hover:border-accent"
+          class="rounded-full bg-ink px-4 py-2 text-sm text-cream transition hover:bg-accent"
         >
           واتساپ
         </a>

@@ -14,7 +14,7 @@ useHead({
       <PackagesSection />
       <GallerySection />
       <TestimonialsSection />
-      <BookingSection />
+      <ContactSection />
     </main>
     <SiteFooter />
     <StickyMobileCta />

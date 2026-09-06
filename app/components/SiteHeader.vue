@@ -6,7 +6,7 @@ const links = [
   { href: '#about', label: 'درباره' },
   { href: '#packages', label: 'پکیج‌ها' },
   { href: '#gallery', label: 'گالری' },
-  { href: '#booking', label: 'رزرو' },
+  { href: '#contact', label: 'تماس' },
 ]
 
 const open = ref(false)
@@ -42,12 +42,12 @@ const open = ref(false)
           اینستاگرام
         </a>
         <a
-          :href="hasWhatsApp ? buildWhatsAppUrl(defaultConsultMessage) : '#booking'"
+          :href="hasWhatsApp ? buildWhatsAppUrl(defaultConsultMessage) : '#contact'"
           :target="hasWhatsApp ? '_blank' : undefined"
           :rel="hasWhatsApp ? 'noopener noreferrer' : undefined"
           class="rounded-full bg-ink px-4 py-2 text-sm text-cream transition hover:bg-accent"
         >
-          رزرو مشاوره
+          گفت‌وگو در واتساپ
         </a>
       </div>
 

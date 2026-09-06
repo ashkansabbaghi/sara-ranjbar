@@ -36,7 +36,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      whatsapp: process.env.NUXT_PUBLIC_WHATSAPP || 'https://wa.me/qr/IAPLLTWMOZISF1',
+      whatsapp: process.env.NUXT_PUBLIC_WHATSAPP || '989381482799',
       instagram: process.env.NUXT_PUBLIC_INSTAGRAM || '__sararanjbar',
     },
   },

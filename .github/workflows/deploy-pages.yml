@@ -35,7 +35,7 @@ jobs:
         env:
           NUXT_APP_BASE_URL: /sara-ranjbar/
           NITRO_PRESET: github_pages
-          NUXT_PUBLIC_WHATSAPP: https://wa.me/qr/IAPLLTWMOZISF1
+          NUXT_PUBLIC_WHATSAPP: 989381482799
           NUXT_PUBLIC_INSTAGRAM: __sararanjbar
 
       - name: Upload Pages artifact

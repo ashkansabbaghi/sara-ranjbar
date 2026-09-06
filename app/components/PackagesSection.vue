@@ -1,14 +1,7 @@
 <script setup lang="ts">
-import type { PackageId } from '~/composables/useBooking'
+const { buildWhatsAppUrl, hasWhatsApp } = useContact()
 
-const { selectPackage } = useBooking()
-
-const packages: {
-  id: Exclude<PackageId, ''>
-  title: string
-  price: string
-  description: string
-}[] = [
+const packages = [
   {
     id: 'companion',
     title: 'میکاپ همراه',
@@ -33,7 +26,13 @@ const packages: {
     price: '۱۵ میلیون تومان',
     description: 'بالاترین سطح خدمات عروس — ماندگار و کامل.',
   },
-]
+] as const
+
+function packageWhatsAppUrl(title: string) {
+  return buildWhatsAppUrl(
+    `سلام سارا، درباره پکیج «${title}» پیام می‌دم.`,
+  )
+}
 </script>
 
 <template>
@@ -56,13 +55,14 @@ const packages: {
           <h3 class="text-lg font-semibold text-ink">{{ pkg.title }}</h3>
           <p class="mt-2 text-sm font-medium text-accent">{{ pkg.price }}</p>
           <p class="mt-3 flex-1 text-sm leading-7 text-ink-muted">{{ pkg.description }}</p>
-          <button
-            type="button"
+          <a
+            :href="hasWhatsApp ? packageWhatsAppUrl(pkg.title) : '#contact'"
+            :target="hasWhatsApp ? '_blank' : undefined"
+            :rel="hasWhatsApp ? 'noopener noreferrer' : undefined"
             class="mt-6 inline-flex w-full items-center justify-center rounded-full bg-ink px-4 py-2.5 text-sm text-cream transition hover:bg-accent"
-            @click="selectPackage(pkg.id)"
           >
-            انتخاب و رزرو
-          </button>
+            گفت‌وگو در واتساپ
+          </a>
         </article>
       </div>
 
