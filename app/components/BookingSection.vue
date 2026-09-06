@@ -21,10 +21,10 @@ watch(
 )
 
 const packageOptions = [
-  { value: 'day', label: packageLabels.day },
-  { value: 'event', label: packageLabels.event },
-  { value: 'bridal', label: packageLabels.bridal },
-  { value: 'companions', label: packageLabels.companions },
+  { value: 'companion', label: packageLabels.companion },
+  { value: 'companionVip', label: packageLabels.companionVip },
+  { value: 'bridalVip', label: packageLabels.bridalVip },
+  { value: 'bridalCip', label: packageLabels.bridalCip },
 ]
 
 function composeMessage() {
@@ -47,7 +47,7 @@ const whatsappFormUrl = computed(() => buildWhatsAppUrl(composeMessage()))
 
 function onSubmit() {
   if (!hasWhatsApp.value) {
-    alert('شماره واتساپ هنوز تنظیم نشده است. لطفاً NUXT_PUBLIC_WHATSAPP را در .env پر کنید.')
+    alert('لینک واتساپ هنوز تنظیم نشده است. لطفاً NUXT_PUBLIC_WHATSAPP را در .env پر کنید.')
     return
   }
   window.open(whatsappFormUrl.value, '_blank', 'noopener,noreferrer')
@@ -73,7 +73,7 @@ function onSubmit() {
             گفت‌وگو در واتساپ
           </a>
           <p v-if="!hasWhatsApp" class="mt-3 text-xs text-ink-muted">
-            شماره واتساپ از طریق متغیر محیطی تنظیم می‌شود (فعلاً خالی است).
+            لینک واتساپ از طریق متغیر محیطی تنظیم می‌شود (فعلاً خالی است).
           </p>
         </div>
 

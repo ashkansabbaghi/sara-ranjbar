@@ -10,28 +10,28 @@ const packages: {
   description: string
 }[] = [
   {
-    id: 'day',
-    title: 'روز مینیمال',
-    price: 'از ۱٫۵ میلیون',
-    description: 'پوست تمیز، ابرو و گونه ملایم — مناسب روزمره و جلسات.',
+    id: 'companion',
+    title: 'میکاپ همراه',
+    price: '۵ میلیون تومان',
+    description: 'آرایش صورت برای همراهان — تمیز، هماهنگ و مناسب مراسم.',
   },
   {
-    id: 'event',
-    title: 'ایونت سافت',
-    price: 'از ۳ میلیون',
-    description: 'نرم و درخشان برای مهمانی و مناسبت‌های عصرانه.',
+    id: 'companionVip',
+    title: 'میکاپ همراه VIP',
+    price: '۶ میلیون تومان',
+    description: 'نسخه VIP همراه با ماندگاری و جزئیات بیشتر.',
   },
   {
-    id: 'bridal',
-    title: 'عروس مینیمال',
-    price: 'از ۶٫۵ میلیون',
-    description: 'عروس سبک و مدرن با ماندگاری و فرم طبیعی.',
+    id: 'bridalVip',
+    title: 'میکاپ عروس VIP',
+    price: '۱۳ میلیون تومان',
+    description: 'عروس VIP با رویکرد پوست‌محور و camera-ready.',
   },
   {
-    id: 'companions',
-    title: 'همراهان',
-    price: 'از ۱٫۵ میلیون / نفر',
-    description: 'هماهنگ با عروس یا ایونت، برای همراهان نزدیک.',
+    id: 'bridalCip',
+    title: 'میکاپ عروس CIP',
+    price: '۱۵ میلیون تومان',
+    description: 'بالاترین سطح خدمات عروس — ماندگار و کامل.',
   },
 ]
 </script>
@@ -43,7 +43,7 @@ const packages: {
         <p class="text-xs font-medium tracking-[0.18em] text-accent">پکیج‌ها</p>
         <h2 class="mt-3 text-2xl font-semibold text-ink sm:text-3xl">انتخاب بر اساس مناسبت</h2>
         <p class="mt-3 text-sm leading-7 text-ink-muted">
-          قیمت‌ها تقریبی‌اند و نیاز به تأیید نهایی دارند. با انتخاب هر کارت، فرم رزرو از پیش پر می‌شود.
+          قیمت‌های اعلام‌شده برای هر پکیج. جزئیات نهایی در مشاوره کوتاه هماهنگ می‌شود.
         </p>
       </div>
 
@@ -68,7 +68,7 @@ const packages: {
 
       <p class="mt-8 text-sm leading-7 text-ink-muted">
         <span class="font-medium text-ink">افزودنی‌ها:</span>
-        اکستنشن مژه موقت، تثبیت بیشتر، و خدمات جانبی با هماهنگی — جزئیات هنگام مشاوره.
+        ایاب‌وذهاب، مژه پریمیوم، کیت تاچ‌آپ و آموزش کوتاه بازتولید — با هماهنگی هنگام مشاوره.
       </p>
     </div>
   </section>

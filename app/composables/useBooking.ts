@@ -1,10 +1,15 @@
-export type PackageId = 'day' | 'event' | 'bridal' | 'companions' | ''
+export type PackageId =
+  | 'companion'
+  | 'companionVip'
+  | 'bridalVip'
+  | 'bridalCip'
+  | ''
 
 export const packageLabels: Record<Exclude<PackageId, ''>, string> = {
-  day: 'روز مینیمال',
-  event: 'ایونت سافت',
-  bridal: 'عروس مینیمال',
-  companions: 'همراهان',
+  companion: 'میکاپ همراه',
+  companionVip: 'میکاپ همراه VIP',
+  bridalVip: 'میکاپ عروس VIP',
+  bridalCip: 'میکاپ عروس CIP',
 }
 
 const selectedPackage = ref<PackageId>('')

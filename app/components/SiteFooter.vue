@@ -40,7 +40,7 @@ const year = new Date().getFullYear()
       </div>
     </div>
     <div class="mx-auto max-w-6xl border-t border-sand px-4 py-6 text-xs text-ink-muted sm:px-6">
-      © {{ year }} سارا رنجبر · قیمت‌ها نیاز به تأیید دارند · شماره تماس واقعی در env تنظیم شود
+      © {{ year }} سارا رنجبر · کرج
     </div>
   </footer>
 </template>

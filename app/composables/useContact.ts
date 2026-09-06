@@ -1,28 +1,45 @@
 export function useContact() {
   const config = useRuntimeConfig()
 
+  const whatsappRaw = computed(() => String(config.public.whatsapp || '').trim())
+
+  const isWhatsAppUrl = computed(() => {
+    const v = whatsappRaw.value
+    return /^https?:\/\//i.test(v) || v.includes('wa.me')
+  })
+
   const whatsappNumber = computed(() => {
-    const raw = String(config.public.whatsapp || '').replace(/\D/g, '')
-    return raw
+    if (isWhatsAppUrl.value) return ''
+    return whatsappRaw.value.replace(/\D/g, '')
   })
 
   const instagramHandle = computed(() => {
     return String(config.public.instagram || '').replace(/^@/, '').trim()
   })
 
-  const hasWhatsApp = computed(() => whatsappNumber.value.length >= 10)
+  const hasWhatsApp = computed(
+    () => isWhatsAppUrl.value || whatsappNumber.value.length >= 10,
+  )
   const hasInstagram = computed(() => instagramHandle.value.length > 0)
 
   const instagramUrl = computed(() =>
     hasInstagram.value
-      ? `https://instagram.com/${instagramHandle.value}`
+      ? `https://www.instagram.com/${instagramHandle.value}`
       : '#instagram',
   )
 
   function buildWhatsAppUrl(message: string) {
     if (!hasWhatsApp.value) return '#whatsapp'
-    const text = encodeURIComponent(message)
-    return `https://wa.me/${whatsappNumber.value}?text=${text}`
+
+    if (isWhatsAppUrl.value) {
+      const base = whatsappRaw.value
+      // QR deep links usually ignore prefilled text
+      if (base.includes('/qr/')) return base
+      const sep = base.includes('?') ? '&' : '?'
+      return `${base}${sep}text=${encodeURIComponent(message)}`
+    }
+
+    return `https://wa.me/${whatsappNumber.value}?text=${encodeURIComponent(message)}`
   }
 
   const defaultConsultMessage =
@@ -30,6 +47,7 @@ export function useContact() {
 
   return {
     whatsappNumber,
+    whatsappRaw,
     instagramHandle,
     hasWhatsApp,
     hasInstagram,
