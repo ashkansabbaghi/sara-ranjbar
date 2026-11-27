@@ -21,14 +21,14 @@ jobs:
       HAS_CONTENT_TOKEN: ${{ secrets.CONTENT_READ_TOKEN != '' }}
     steps:
       - name: Checkout
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       # Without the secret the site still builds, just with an empty gallery.
       - name: Checkout content
         if: env.HAS_CONTENT_TOKEN == 'true'
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: ${{ vars.CONTENT_REPO || 'ashkansabbaghi/sara-ranjbar-content' }}
           token: ${{ secrets.CONTENT_READ_TOKEN }}
