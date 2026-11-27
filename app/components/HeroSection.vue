@@ -5,7 +5,11 @@ const {
   hasWhatsApp,
   hasInstagram,
   instagramUrl,
+  hasPhone,
+  phoneUrl,
 } = useContact()
+const { heroImage, page } = useSiteContent()
+const hero = page.hero
 </script>
 
 <template>
@@ -14,13 +18,13 @@ const {
     <div class="relative mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-12 lg:items-center lg:gap-12 lg:py-28">
       <div class="lg:col-span-7">
         <p class="mb-4 text-xs font-medium tracking-[0.2em] text-accent sm:text-sm">
-          سارا رنجبر · کرج
+          {{ hero.eyebrow }}
         </p>
         <h1 class="text-3xl font-semibold leading-snug text-ink sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
-          آرایش صورت، مینیمال و مدرن — در کرج
+          {{ hero.title }}
         </h1>
         <p class="mt-5 max-w-xl text-base leading-8 text-ink-muted sm:text-lg">
-          پوست تمیز، فرم طبیعی، بدون شلوغی. برای روز، ایونت، و عروس.
+          {{ hero.subtitle }}
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a
@@ -30,6 +34,13 @@ const {
             class="inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-medium text-cream transition hover:bg-accent"
           >
             گفت‌وگو در واتساپ
+          </a>
+          <a
+            v-if="hasPhone"
+            :href="phoneUrl"
+            class="inline-flex items-center justify-center rounded-full border border-stone-soft bg-white-soft px-6 py-3 text-sm font-medium text-ink transition hover:border-accent hover:text-accent"
+          >
+            تماس تلفنی
           </a>
           <a
             v-if="hasInstagram"
@@ -45,13 +56,25 @@ const {
 
       <div class="lg:col-span-5">
         <div class="relative aspect-[4/5] overflow-hidden rounded-3xl bg-sand shadow-sm ring-1 ring-stone-soft/60">
-          <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 p-8 text-center">
-            <div class="h-20 w-20 rounded-full border border-accent-soft/60 bg-cream/80" />
-            <p class="text-sm text-ink-muted">فضای بصری مینیمال</p>
-            <p class="text-xs text-ink-muted/80">جای تصویر پرتره / نمونه کار</p>
-          </div>
-          <div class="absolute bottom-4 start-4 end-4 rounded-2xl bg-cream/90 px-4 py-3 backdrop-blur">
-            <p class="text-xs text-ink-muted">تمیز · طبیعی · بدون شلوغی</p>
+          <NuxtImg
+            v-if="heroImage"
+            :src="heroImage.src"
+            :width="heroImage.width"
+            :height="heroImage.height"
+            sizes="xs:100vw sm:100vw md:640px lg:480px"
+            alt="نمونه‌کار میکاپ سارا رنجبر"
+            preload
+            loading="eager"
+            fetchpriority="high"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+          <div
+            v-else
+            class="absolute inset-0 bg-gradient-to-br from-sand via-cream to-stone-soft/50"
+            aria-hidden="true"
+          />
+          <div v-if="hero.badge" class="absolute bottom-4 start-4 end-4 rounded-2xl bg-cream/90 px-4 py-3 backdrop-blur">
+            <p class="text-xs text-ink-muted">{{ hero.badge }}</p>
           </div>
         </div>
       </div>

@@ -5,18 +5,5 @@ useHead({
 </script>
 
 <template>
-  <div class="min-h-screen bg-cream text-ink font-sans">
-    <SiteHeader />
-    <main>
-      <HeroSection />
-      <TrustBar />
-      <AboutSection />
-      <PackagesSection />
-      <GallerySection />
-      <TestimonialsSection />
-      <ContactSection />
-    </main>
-    <SiteFooter />
-    <StickyMobileCta />
-  </div>
+  <NuxtPage />
 </template>

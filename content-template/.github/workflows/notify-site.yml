@@ -1,0 +1,24 @@
+name: Notify site
+
+# Rebuilds the site after the studio panel commits. The token only has Actions: write on
+# the site repo, so it can start a build but cannot change site code. Nothing from the
+# commit (message, author, file names) is used in the run step.
+
+on:
+  push:
+    branches: [main]
+
+permissions: {}
+
+concurrency:
+  group: notify-site
+  cancel-in-progress: true
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger site deploy
+        env:
+          GH_TOKEN: ${{ secrets.SITE_DISPATCH_TOKEN }}
+        run: gh workflow run deploy-pages.yml --repo ashkansabbaghi/sara-ranjbar --ref main

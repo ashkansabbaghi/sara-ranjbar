@@ -1,32 +1,7 @@
 <script setup lang="ts">
 const { buildWhatsAppUrl, hasWhatsApp } = useContact()
 
-const packages = [
-  {
-    id: 'companion',
-    title: 'میکاپ همراه',
-    price: '۵ میلیون تومان',
-    description: 'آرایش صورت برای همراهان — تمیز، هماهنگ و مناسب مراسم.',
-  },
-  {
-    id: 'companionVip',
-    title: 'میکاپ همراه VIP',
-    price: '۶ میلیون تومان',
-    description: 'نسخه VIP همراه با ماندگاری و جزئیات بیشتر.',
-  },
-  {
-    id: 'bridalVip',
-    title: 'میکاپ عروس VIP',
-    price: '۱۳ میلیون تومان',
-    description: 'عروس VIP با رویکرد پوست‌محور و camera-ready.',
-  },
-  {
-    id: 'bridalCip',
-    title: 'میکاپ عروس CIP',
-    price: '۱۵ میلیون تومان',
-    description: 'بالاترین سطح خدمات عروس — ماندگار و کامل.',
-  },
-] as const
+const packages = useSiteContent().page.packages
 
 function packageWhatsAppUrl(title: string) {
   return buildWhatsAppUrl(
@@ -36,20 +11,18 @@ function packageWhatsAppUrl(title: string) {
 </script>
 
 <template>
-  <section id="packages" class="scroll-mt-24 border-y border-sand bg-white-soft/50">
+  <section v-if="packages.items.length" id="packages" class="scroll-mt-24 border-y border-sand bg-white-soft/50">
     <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
       <div class="max-w-2xl">
         <p class="text-xs font-medium tracking-[0.18em] text-accent">پکیج‌ها</p>
-        <h2 class="mt-3 text-2xl font-semibold text-ink sm:text-3xl">انتخاب بر اساس مناسبت</h2>
-        <p class="mt-3 text-sm leading-7 text-ink-muted">
-          قیمت‌های اعلام‌شده برای هر پکیج. جزئیات نهایی در مشاوره کوتاه هماهنگ می‌شود.
-        </p>
+        <h2 class="mt-3 text-2xl font-semibold text-ink sm:text-3xl">{{ packages.title }}</h2>
+        <p v-if="packages.intro" class="mt-3 text-sm leading-7 text-ink-muted">{{ packages.intro }}</p>
       </div>
 
       <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <article
-          v-for="pkg in packages"
-          :key="pkg.id"
+          v-for="(pkg, i) in packages.items"
+          :key="i"
           class="flex flex-col rounded-3xl border border-stone-soft/70 bg-cream p-5 shadow-sm transition hover:border-accent-soft"
         >
           <h3 class="text-lg font-semibold text-ink">{{ pkg.title }}</h3>
@@ -66,9 +39,9 @@ function packageWhatsAppUrl(title: string) {
         </article>
       </div>
 
-      <p class="mt-8 text-sm leading-7 text-ink-muted">
+      <p v-if="packages.extras" class="mt-8 text-sm leading-7 text-ink-muted">
         <span class="font-medium text-ink">افزودنی‌ها:</span>
-        ایاب‌وذهاب، مژه پریمیوم، کیت تاچ‌آپ و آموزش کوتاه بازتولید — با هماهنگی هنگام مشاوره.
+        {{ packages.extras }}
       </p>
     </div>
   </section>

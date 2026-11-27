@@ -17,10 +17,28 @@ export function useContact() {
     return String(config.public.instagram || '').replace(/^@/, '').trim()
   })
 
+  const phoneNumber = computed(() =>
+    String(config.public.phone || '').replace(/\D/g, ''),
+  )
+
+  const telegramHandle = computed(() => {
+    const v = String(config.public.telegram || '').replace(/^@/, '').trim()
+    return /^[A-Za-z0-9_]{5,32}$/.test(v) ? v : ''
+  })
+
   const hasWhatsApp = computed(
     () => isWhatsAppUrl.value || whatsappNumber.value.length >= 10,
   )
   const hasInstagram = computed(() => instagramHandle.value.length > 0)
+  const hasPhone = computed(() => phoneNumber.value.length >= 10)
+  const hasTelegram = computed(() => telegramHandle.value.length > 0)
+
+  const phoneUrl = computed(() =>
+    hasPhone.value ? `tel:+${phoneNumber.value}` : '#contact',
+  )
+  const telegramUrl = computed(() =>
+    hasTelegram.value ? `https://t.me/${telegramHandle.value}` : '#contact',
+  )
 
   const instagramUrl = computed(() =>
     hasInstagram.value
@@ -52,6 +70,10 @@ export function useContact() {
     hasWhatsApp,
     hasInstagram,
     instagramUrl,
+    hasPhone,
+    phoneUrl,
+    hasTelegram,
+    telegramUrl,
     buildWhatsAppUrl,
     defaultConsultMessage,
   }

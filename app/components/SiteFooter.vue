@@ -1,6 +1,16 @@
 <script setup lang="ts">
-const { instagramUrl, hasInstagram, buildWhatsAppUrl, defaultConsultMessage, hasWhatsApp } =
-  useContact()
+const {
+  instagramUrl,
+  hasInstagram,
+  buildWhatsAppUrl,
+  defaultConsultMessage,
+  hasWhatsApp,
+  hasPhone,
+  phoneUrl,
+  hasTelegram,
+  telegramUrl,
+} = useContact()
+const { tagline } = useSiteContent().page.footer
 const year = new Date().getFullYear()
 </script>
 
@@ -9,9 +19,7 @@ const year = new Date().getFullYear()
     <div class="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 md:flex-row md:items-start md:justify-between">
       <div>
         <p class="text-sm font-semibold text-ink">سارا رنجبر</p>
-        <p class="mt-2 max-w-sm text-sm leading-7 text-ink-muted">
-          آرایش صورت مینیمال و مدرن در کرج. پوست تمیز، فرم طبیعی، بدون شلوغی.
-        </p>
+        <p class="mt-2 max-w-sm text-sm leading-7 text-ink-muted">{{ tagline }}</p>
       </div>
       <div class="flex flex-wrap gap-3">
         <a
@@ -21,6 +29,22 @@ const year = new Date().getFullYear()
           class="rounded-full bg-ink px-4 py-2 text-sm text-cream transition hover:bg-accent"
         >
           واتساپ
+        </a>
+        <a
+          v-if="hasPhone"
+          :href="phoneUrl"
+          class="rounded-full border border-stone-soft px-4 py-2 text-sm text-ink transition hover:border-accent"
+        >
+          تماس
+        </a>
+        <a
+          v-if="hasTelegram"
+          :href="telegramUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full border border-stone-soft px-4 py-2 text-sm text-ink transition hover:border-accent"
+        >
+          تلگرام
         </a>
         <a
           v-if="hasInstagram"

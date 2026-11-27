@@ -2,10 +2,12 @@
 const { instagramUrl, hasInstagram, buildWhatsAppUrl, defaultConsultMessage, hasWhatsApp } =
   useContact()
 
+const { gallery, page } = useSiteContent()
+
 const links = [
   { href: '#about', label: 'درباره' },
-  { href: '#packages', label: 'پکیج‌ها' },
-  { href: '#gallery', label: 'گالری' },
+  ...(page.packages.items.length ? [{ href: '#packages', label: 'پکیج‌ها' }] : []),
+  ...(gallery.length ? [{ href: '#gallery', label: 'گالری' }] : []),
   { href: '#contact', label: 'تماس' },
 ]
 
